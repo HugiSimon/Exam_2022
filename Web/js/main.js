@@ -1,9 +1,7 @@
 function createIdentite (nom) {
     var typeNom = ['Nom', 'Prenom'];
 
-    var contenu = "<form>"; // début du formulaire
-
-    contenu += "<div class='form-group'>"; // début du groupe de champs
+    var contenu = "<div class='form-group'>"; // début du groupe de champs
 
     contenu += "<label for='genre'>Genre : </label>"; // label pour le genre
     contenu += '<label for="Homme">Homme</label>'; // label pour l'homme
@@ -58,7 +56,29 @@ function createIdentite (nom) {
     contenu += "<input type='text' id='telephone' placeholder='Téléphone'>";
 
     contenu += "</div>";
-    contenu += "</form>";
+
+    document.getElementById(nom).innerHTML = contenu;
+}
+
+function createJeux (nom) {
+    var contenu = "<div class='form-group'>"; // début du groupe de champs
+
+    contenu += "<label for='jeux'>Vos type de jeux préférés : </label>"; // label pour le jeux
+    contenu += "<div class='form-check'>";
+    contenu += "<input type='checkbox' id='jeux' value='Jeux de dés'>Jeux de dés";
+    contenu += "</div>";
+    contenu += "<div class='form-check'>";
+    contenu += "<input type='checkbox' id='jeux' value='Jeux de cartes'>Jeux de cartes";
+    contenu += "</div>";
+    contenu += "<div class='form-check'>";
+    contenu += "<input type='checkbox' id='jeux' value='Jeux de plateau'>Jeux de plateau";
+    contenu += "</div>";
+    contenu += "<div class='form-check'>";
+    contenu += "<input type='checkbox' id='jeux' value='Jeux d\'adress'>Jeux d\'adress";
+    contenu += "</div>";
+    contenu += "<div class='form-check'>";
+    contenu += "<input type='checkbox' id='jeux' value='Jeux de conaissance'>Jeux de conaissance";
+    contenu += "</div>";
 
     document.getElementById(nom).innerHTML = contenu;
 }

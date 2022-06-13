@@ -21,6 +21,10 @@ header {
     margin: 0px;
 }
 
+.form-check {
+    display: inline-block;
+}
+
 body {
     background-color: wheat;
     font-family: 'Open Sans', sans-serif;
