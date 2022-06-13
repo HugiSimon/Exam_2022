@@ -1,17 +1,18 @@
 function createIdentite (nom) {
     var typeNom = ['Nom', 'Prenom'];
+    var typeGenre = ['Homme', 'Femme'];
 
     var contenu = "<div class='form-group'>"; // début du groupe de champs
 
     contenu += "<label for='genre'>Genre : </label>"; // label pour le genre
-    contenu += '<label for="Homme">Homme</label>'; // label pour l'homme
-    contenu += '<input type="radio" name="genre" value="Homme" id="Homme" checked>';
-    contenu += '<label for="Femme"> Femme</label>'; // label pour la femme
-    contenu += '<input type="radio" name="genre" value="Femme" id="Femme">';
+    for(var i = 0; i < typeGenre.length ; i++) {
+        contenu += "<label for='" + typeGenre[i] + "'>" + typeGenre[i] + "</label>";
+        contenu += "<input type='radio' name='genre' value='" + typeGenre[i] + "'></input>";
+    }
 
     contenu += "</div>"; 
     
-    for(i=0; i < 2 ;i++){ // pour le prenom et le nom
+    for(i=0; i < typeNom.length ;i++){ // pour le prenom et le nom
         contenu += "<div class='form-group'>";
         contenu += "<label for='" + typeNom[i] + "'>" + typeNom[i] + " : </label>";
         contenu += "<input type='text' id='" + typeNom[i] + "' placeholder='" + typeNom[i] + "'>";
@@ -62,36 +63,26 @@ function createIdentite (nom) {
 
 function createJeux (nom) {
     var contenu = "<div class='form-group'>"; // début du groupe de champs
+    var typeJeux = ['Jeux de dés :', 'Jeux de cartes :', 'Jeux de plateau :', "Jeux d'adresse :", 'Jeux de connaisance :'];
 
     contenu += "<label for='jeux'>Vos types de jeux préférés : </label>"; // label pour le jeux
-    contenu += "<div class='form-check'>";
-    contenu += "<input type='checkbox' id='jeux' value='Jeux de dés'>Jeux de dés";
-    contenu += "</div>";
-    contenu += "<div class='form-check'>";
-    contenu += "<input type='checkbox' id='jeux' value='Jeux de cartes'>Jeux de cartes";
-    contenu += "</div>";
-    contenu += "<div class='form-check'>";
-    contenu += "<input type='checkbox' id='jeux' value='Jeux de plateau'>Jeux de plateau";
-    contenu += "</div>";
-    contenu += "<div class='form-check'>";
-    contenu += "<input type='checkbox' id='jeux' value='Jeux d\'adress'>Jeux d\'adress";
-    contenu += "</div>";
-    contenu += "<div class='form-check'>";
-    contenu += "<input type='checkbox' id='jeux' value='Jeux de conaissance'>Jeux de conaissance";
-    contenu += "</div>";
+    for(var i = 0; i < typeJeux.length ; i++) {
+        contenu += "<label for='" + typeJeux[i] + "'>" + typeJeux[i] + "</label>";
+        contenu += "<input type='checkbox' name='" + typeJeux[i] + "' value='" + typeJeux[i] + "'></input>";
+    }
 
     document.getElementById(nom).innerHTML = contenu;
 }
 
 function createAvis (nom) {
+    var TypeDeJeux = ['Monopoly', 'Uno', 'Jenga', 'Limite Limite'];
     //Choix d'un jeu pour lui donner un avis
     var contenu = "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='avis'>Votre avis sur le jeu : </label>"; // label pour le jeux
     contenu += "<select id='avis'>";
-    contenu += "<option value='Monopoly'>Monopoly</option>";
-    contenu += "<option value='Uno'>Uno</option>";
-    contenu += "<option value='Jenga'>Jenga</option>";
-    contenu += "<option value='Limite Limite'>Limite Limite</option>";
+    for(var i = 0; i < TypeDeJeux.length ; i++) {
+        contenu += "<option value='" + TypeDeJeux[i] + "'>" + TypeDeJeux[i] + "</option>";
+    }
     contenu += "</select>";
     contenu += "</div>";
 
@@ -99,11 +90,9 @@ function createAvis (nom) {
     contenu += "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='note'>Votre note sur le jeu : </label>"; // label pour le jeux
     contenu += "<select id='note'>";
-    contenu += "<option value='1'>1</option>";
-    contenu += "<option value='2'>2</option>";
-    contenu += "<option value='3'>3</option>";
-    contenu += "<option value='4'>4</option>";
-    contenu += "<option value='5'>5</option>";
+    for(var i = 1; i < 6 ; i++) {
+        contenu += "<option value='" + i + "'>" + i + "</option>";
+    }
     contenu += "</select>";
     contenu += "</div>";
 
