@@ -63,12 +63,14 @@ function createIdentite (nom) { // créé le formulaire d'identité
 
 function createJeux (nom) { // créé le formulaire de jeux
     var contenu = "<div class='form-group'>"; // début du groupe de champs
-    var typeJeux = ['Jeux de dés :', 'Jeux de cartes :', 'Jeux de plateau :', "Jeux d'adresse :", 'Jeux de connaisance :'];
+    var typeJeux = ['Jeux de dés :', 'Jeux de cartes :', 'Jeux de plateau :', "Jeux d adresse :", 'Jeux de connaisance :'];
 
     contenu += "<label for='jeux'>Vos types de jeux préférés : </label>"; // label pour le jeux
     for(var i = 0; i < typeJeux.length ; i++) {
+        contenu += "<div class='typeJeu' id='typeNumero" + i +"'>";
         contenu += "<label for='" + typeJeux[i] + "'>" + typeJeux[i] + "</label>";
-        contenu += "<input type='checkbox' class='TypeJeuPref' name='" + typeJeux[i] + "' value='" + typeJeux[i] + "'></input>";
+        contenu += "<input type='checkbox' class='TypeJeuPref' name='" + typeJeux[i] + "' value='" + typeJeux[i] + "' onchange='selectJeu(" + '"' + "typeNumero" + i + '"' + ")'></input>";
+        contenu += "</div>";
     }
 
     document.getElementById(nom).innerHTML = contenu;
@@ -120,6 +122,26 @@ function createAll (identite, jeux, avis, bouton) { // créé tout le formulaire
     createBouton(bouton);
 }
 
+function selectJeu (nom) { // liste a choix multilple de jeux à partir des types de jeux préférés
+    var contenu = document.getElementById(nom).innerHTML;
+    var typeJeux = [['Jeux de dés :', 'Rummikub', 'Story Cubes', 'Wazabi'], ['Jeux de cartes :', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne'], ['Jeux de plateau :', 'Monopoly', 'Petits Chevaux', "Jeu de l'oie"], ["Jeux d adresse :", 'Mikado', "Jenga", "Twister"], ['Jeux de connaisance :', "Trivial Poursuit", "Time's Up"]];
+    var numeroJeu = parseInt(nom.split("typeNumero")[1]) // récupère le numéro du type de jeux pour avoir le bon tableau
+    if (document.getElementsByName(contenu.split('"')[1])[0].checked) { // si le type de jeux est coché ou non
+        for (var i = 1; i < typeJeux[numeroJeu].length; i++) {
+            contenu += "<div class='typeAimeJeu'>";
+            contenu += "<label for='" + typeJeux[numeroJeu][i] + "'>" + typeJeux[numeroJeu][i] + "</label>";
+            contenu += "<input type='checkbox' class='TypeJeuPref' name='" + typeJeux[numeroJeu][i] + "' value='" + typeJeux[numeroJeu][i] + "'></input>";
+            contenu += "</div>";
+        }
+        document.getElementById(nom).innerHTML = contenu;
+        document.getElementsByName(contenu.split('"')[1])[0].checked = true; // coche le type de jeux car s'enlève tout seul
+    }
+    else {
+        contenu = contenu.split("<div")[0]; // récupère le code avant qu'il était coché
+        document.getElementById(nom).innerHTML = contenu;
+    }
+}   
+
 function checkRequired() { // vérifie que tous les champs obligatoires sont remplis
     var compteur = 0; // compte le nombre de champ requis manquant
 
@@ -144,23 +166,37 @@ function checkRequired() { // vérifie que tous les champs obligatoires sont rem
             j++;
         }
     }
-    if(j == 0) {
-        for (var i = 0; i < radio.length; i++) {
-            radio[i].style.boxShadow = "0 0 0 2px red";
+    if(j == 0) { // vérifie que le genre est choisi
+        for (var i = 0; i < radio.length; i++) { 
+            radio[i].style.boxShadow = "0 0 0 2px red"; 
         }
         compteur++;
     }
 
     var typedejeu = document.getElementsByClassName('TypeJeuPref');
     var j = 0;
+    var k = 0;
     for(var i = 0; i < typedejeu.length ; i++) { // parcours tous les champs checkbox type de jeu
         if(typedejeu[i].checked) {
             j++;
         }
     }
-    if(j == 0) {
+    if(j == 0) { // vérifie que le type de jeu est choisi
         for (var i = 0; i < typedejeu.length ; i++) {
             typedejeu[i].style.boxShadow = "0 0 0 2px red";
+        }
+        compteur++;
+    }
+    else{ // le type jeu est choisi, mais vérifier les jeux aimés
+        for (var i = 0; i < document.getElementsByClassName("typeAimeJeu").length; i++) {
+            if(document.getElementsByClassName("typeAimeJeu")[i].getElementsByTagName("input")[0].checked) { // vérifie que le les jeux aimés sont choisis
+                k++;
+            }
+        }
+    }
+    if(k == 0) { // vérifie que le les jeux aimés sont choisis
+        for (var i = 0; i < document.getElementsByClassName("typeAimeJeu").length; i++) {
+            document.getElementsByClassName("typeAimeJeu")[i].getElementsByTagName("input")[0].style.boxShadow = "0 0 0 2px red";
         }
         compteur++;
     }
@@ -171,4 +207,5 @@ function checkRequired() { // vérifie que tous les champs obligatoires sont rem
     else {
         return false;
     }
+
 }
