@@ -8,17 +8,29 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/main.js"></script>
 </head>
-<body onload='createBouton("submit")' id="body">
+<body onload="createAll('identite', 'jeux', 'avis', 'submit')" id="body">
     <header>
         <img src="../img/logo.png" alt="logo" id="logo">
         <h1 id="headTitle">KiffMySocialGame</h1>
     </header>
     <main>
         <form>
-            <div id="identite"></div>
-            <div id="jeux"></div>
-            <div id="avis"></div>
-            <div id="submit"></div>
+            <fieldset>
+                <legend>Votre identité</legend>
+                <div id="identite"></div>
+            </fieldset>
+            <fieldset>
+                <legend>Type de jeu</legend>
+                <div id="jeux"></div>
+            </fieldset>
+            <fieldset>
+                <legend>Avis</legend>
+                <div id="avis"></div>
+            </fieldset>
+            <fieldset>
+                <legend>Submit</legend>
+                <div id="submit"></div>
+            </fieldset>
         </form>
     </main>
 </body>

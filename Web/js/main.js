@@ -63,7 +63,7 @@ function createIdentite (nom) {
 function createJeux (nom) {
     var contenu = "<div class='form-group'>"; // début du groupe de champs
 
-    contenu += "<label for='jeux'>Vos type de jeux préférés : </label>"; // label pour le jeux
+    contenu += "<label for='jeux'>Vos types de jeux préférés : </label>"; // label pour le jeux
     contenu += "<div class='form-check'>";
     contenu += "<input type='checkbox' id='jeux' value='Jeux de dés'>Jeux de dés";
     contenu += "</div>";
@@ -122,4 +122,11 @@ function createBouton (nom) {
     contenu += "<input type='reset' id='reset'>";
     contenu += "</div>";
     document.getElementById(nom).innerHTML = contenu;
+}
+
+function createAll (identite, jeux, avis, bouton) {
+    createIdentite(identite);
+    createJeux(jeux);
+    createAvis(avis);
+    createBouton(bouton);
 }

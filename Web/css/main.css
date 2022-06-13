@@ -21,6 +21,13 @@ header {
     margin: 0px;
 }
 
+legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+    font-weight: bold;
+}
+
 .form-check {
     display: inline-block;
 }
