@@ -116,3 +116,10 @@ function createAvis (nom) {
     document.getElementById(nom).innerHTML = contenu;
 }
 
+function createBouton (nom) {
+    var contenu = "<div class='form-group'>"; // début du groupe de champs
+    contenu += "<button type='submit' id='envoyer'>Envoyer</button>";
+    contenu += "<input type='reset' id='reset'>";
+    contenu += "</div>";
+    document.getElementById(nom).innerHTML = contenu;
+}
