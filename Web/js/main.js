@@ -82,3 +82,37 @@ function createJeux (nom) {
 
     document.getElementById(nom).innerHTML = contenu;
 }
+
+function createAvis (nom) {
+    //Choix d'un jeu pour lui donner un avis
+    var contenu = "<div class='form-group'>"; // début du groupe de champs
+    contenu += "<label for='avis'>Votre avis sur le jeu : </label>"; // label pour le jeux
+    contenu += "<select id='avis'>";
+    contenu += "<option value='Monopoly'>Monopoly</option>";
+    contenu += "<option value='Uno'>Uno</option>";
+    contenu += "<option value='Jenga'>Jenga</option>";
+    contenu += "<option value='Limite Limite'>Limite Limite</option>";
+    contenu += "</select>";
+    contenu += "</div>";
+
+    //Choix de la note pour le jeu
+    contenu += "<div class='form-group'>"; // début du groupe de champs
+    contenu += "<label for='note'>Votre note sur le jeu : </label>"; // label pour le jeux
+    contenu += "<select id='note'>";
+    contenu += "<option value='1'>1</option>";
+    contenu += "<option value='2'>2</option>";
+    contenu += "<option value='3'>3</option>";
+    contenu += "<option value='4'>4</option>";
+    contenu += "<option value='5'>5</option>";
+    contenu += "</select>";
+    contenu += "</div>";
+
+    //Commentaire sur le jeu de 200 caractère (optionel)
+    contenu += "<div class='form-group'>"; // début du groupe de champs
+    contenu += "<label for='commentaire'>Votre commentaire sur le jeu : </label>"; // label pour le jeux
+    contenu += "<textarea id='commentaire' rows='4' cols='50'></textarea>";
+    contenu += "</div>";
+
+    document.getElementById(nom).innerHTML = contenu;
+}
+
