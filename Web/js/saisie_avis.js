@@ -82,7 +82,7 @@ function createAvis (nom) { // créé le formulaire d'avis
     //Choix d'un jeu pour lui donner un avis
     var contenu = "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='avis'>Votre avis sur le jeu : </label>"; // label pour le jeux
-    contenu += "<select id='avis'>";
+    contenu += "<select id='avis' name='avis'>";
     for(var i = 0; i < TypeDeJeux.length ; i++) {
         contenu += "<option value='" + TypeDeJeux[i] + "'>" + TypeDeJeux[i] + "</option>";
     }
@@ -92,7 +92,7 @@ function createAvis (nom) { // créé le formulaire d'avis
     //Choix de la note pour le jeu
     contenu += "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='note'>Votre note sur le jeu : </label>"; // label pour le jeux
-    contenu += "<select id='note'>";
+    contenu += "<select id='note' name='note'>";
     for(var i = 1; i < 6 ; i++) {
         contenu += "<option value='" + i + "'>" + i + "</option>";
     }
@@ -102,7 +102,7 @@ function createAvis (nom) { // créé le formulaire d'avis
     //Commentaire sur le jeu de 200 caractère (optionel)
     contenu += "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='commentaire'>Votre commentaire sur le jeu : </label>"; // label pour le jeux
-    contenu += "<textarea class='red' id='commentaire' rows='4' cols='50'></textarea>";
+    contenu += "<textarea class='red' id='commentaire' rows='4' cols='50' name='commentaire'></textarea>";
     contenu += "</div>";
 
     document.getElementById(nom).innerHTML = contenu;
@@ -125,7 +125,7 @@ function createAll (identite, jeux, avis, bouton) { // créé tout le formulaire
 
 function selectJeu (nom) { // liste a choix multilple de jeux à partir des types de jeux préférés
     var contenu = document.getElementById(nom).innerHTML;
-    var typeJeux = [['Jeux de des :', 'Rummikub', 'Story Cubes', 'Wazabi'], ['Jeux de cartes :', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne'], ['Jeux de plateau :', 'Monopoly', 'Petits Chevaux', "Jeu de l'oie"], ["Jeux d adresse :", 'Mikado', "Jenga", "Twister"], ['Jeux de connaisance :', "Trivial Poursuit", "Time's Up"]];
+    var typeJeux = [['Jeux de des :', 'Rummikub', 'Story Cubes', 'Wazabi'], ['Jeux de cartes :', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne'], ['Jeux de plateau :', 'Monopoly', 'Petits Chevaux', "Jeu de l oie"], ["Jeux d adresse :", 'Mikado', "Jenga", "Twister"], ['Jeux de connaisance :', "Trivial Poursuit", "Time's Up"]];
     var numeroJeu = parseInt(nom.split("typeNumero")[1]) // récupère le numéro du type de jeux pour avoir le bon tableau
     if (document.getElementsByName(contenu.split('"')[1])[0].checked) { // si le type de jeux est coché ou non
         for (var i = 1; i < typeJeux[numeroJeu].length; i++) {
