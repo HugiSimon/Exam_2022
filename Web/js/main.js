@@ -37,6 +37,7 @@ function createIdentite (nom) { // créé le formulaire d'identité
 
     contenu += "<label for='date'>Date de naissance : </label>"; // label pour la date de naissance
     contenu += "<input type='date' class='red' id='date' placeholder='Date de naissance'>";
+    contenu += "<p id='ageCalcule' style='display: inline'></p>";
 
     contenu += "</div>";
 
@@ -140,7 +141,16 @@ function selectJeu (nom) { // liste a choix multilple de jeux à partir des type
         contenu = contenu.split("<div")[0]; // récupère le code avant qu'il était coché
         document.getElementById(nom).innerHTML = contenu;
     }
-}   
+}
+
+function age () { // calcul l'age à partir de la date de naissance
+    var date = document.getElementById("date").value;
+    var age = new Date().getFullYear() - date.split("-")[0]; // récupère l'année de naissance
+    if (new Date().getMonth() < date.split("-")[1] || (new Date().getMonth() == date.split("-")[1] && new Date().getDate() < date.split("-")[2])) { // vérifie le mois et le jour pour éviter les erreurs
+        age--;
+    }
+    document.getElementById("ageCalcule").innerHTML = " " + age;
+}
 
 function checkRequired() { // vérifie que tous les champs obligatoires sont remplis
     var compteur = 0; // compte le nombre de champ requis manquant
