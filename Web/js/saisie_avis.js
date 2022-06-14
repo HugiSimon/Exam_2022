@@ -15,14 +15,14 @@ function createIdentite (nom) { // créé le formulaire d'identité
     for(i=0; i < typeNom.length ;i++){ // pour le prenom et le nom
         contenu += "<div class='form-group'>";
         contenu += "<label for='" + typeNom[i] + "'>" + typeNom[i] + " : </label>";
-        contenu += "<input type='text' class='red' id='" + typeNom[i] + "' placeholder='" + typeNom[i] + "'>";
+        contenu += "<input type='text' class='red' id='" + typeNom[i] + "' placeholder='" + typeNom[i] + "' name='" + typeNom[i] + "'>";
         contenu += "</div>";
     }
 
     contenu += "<div class='form-group'>"; 
 
     contenu += "<label for='email'>Email : </label>"; // label pour l'email
-    contenu += "<input type='email' class='red' id='email' placeholder='Email'>";
+    contenu += "<input type='email' class='red' id='email' name='email' placeholder='Email'>";
 
     contenu += "</div>";
 
@@ -36,7 +36,7 @@ function createIdentite (nom) { // créé le formulaire d'identité
     contenu += "<div class='form-group'>";
 
     contenu += "<label for='date'>Date de naissance : </label>"; // label pour la date de naissance
-    contenu += "<input type='date' class='red' id='date' placeholder='Date de naissance'>";
+    contenu += "<input type='date' class='red' id='date' placeholder='Date de naissance' name='date'>";
     contenu += "<p id='ageCalcule' style='display: inline'></p>";
 
     contenu += "</div>";
@@ -44,18 +44,18 @@ function createIdentite (nom) { // créé le formulaire d'identité
     contenu += "<div class='form-group'>";
 
     contenu += "<label for='adresse'>Adresse : </label>"; // label pour l'adresse
-    contenu += "<input type='text' id='adresse' placeholder='Adresse'>";
+    contenu += "<input type='text' id='adresse' placeholder='Adresse' name='adresse'>";
     contenu += "<label for='codePostale'> Code Postal : </label>"; // label pour le code postal
-    contenu += "<input type='text' id='codePostale' placeholder='Code Postal'>";
+    contenu += "<input type='text' id='codePostale' placeholder='Code Postal' name='codePostal'>";
     contenu += "<label for='ville'> Ville : </label>"; // label pour la ville
-    contenu += "<input type='text' id='ville' placeholder='Ville'>";
+    contenu += "<input type='text' id='ville' placeholder='Ville' name='ville'>";
 
     contenu += "</div>";
 
     contenu += "<div class='form-group'>";
 
     contenu += "<label for='telephone'>Téléphone : </label>"; // label pour le téléphone
-    contenu += "<input type='text' id='telephone' placeholder='Téléphone'>";
+    contenu += "<input type='text' id='telephone' placeholder='Téléphone' name='telephone'>";
 
     contenu += "</div>";
 
@@ -64,7 +64,7 @@ function createIdentite (nom) { // créé le formulaire d'identité
 
 function createJeux (nom) { // créé le formulaire de jeux
     var contenu = "<div class='form-group'>"; // début du groupe de champs
-    var typeJeux = ['Jeux de dés :', 'Jeux de cartes :', 'Jeux de plateau :', "Jeux d adresse :", 'Jeux de connaisance :'];
+    var typeJeux = ['Jeux de des :', 'Jeux de cartes :', 'Jeux de plateau :', "Jeux d adresse :", 'Jeux de connaisance :'];
 
     contenu += "<label for='jeux'>Vos types de jeux préférés : </label>"; // label pour le jeux
     for(var i = 0; i < typeJeux.length ; i++) {
@@ -125,7 +125,7 @@ function createAll (identite, jeux, avis, bouton) { // créé tout le formulaire
 
 function selectJeu (nom) { // liste a choix multilple de jeux à partir des types de jeux préférés
     var contenu = document.getElementById(nom).innerHTML;
-    var typeJeux = [['Jeux de dés :', 'Rummikub', 'Story Cubes', 'Wazabi'], ['Jeux de cartes :', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne'], ['Jeux de plateau :', 'Monopoly', 'Petits Chevaux', "Jeu de l'oie"], ["Jeux d adresse :", 'Mikado', "Jenga", "Twister"], ['Jeux de connaisance :', "Trivial Poursuit", "Time's Up"]];
+    var typeJeux = [['Jeux de des :', 'Rummikub', 'Story Cubes', 'Wazabi'], ['Jeux de cartes :', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne'], ['Jeux de plateau :', 'Monopoly', 'Petits Chevaux', "Jeu de l'oie"], ["Jeux d adresse :", 'Mikado', "Jenga", "Twister"], ['Jeux de connaisance :', "Trivial Poursuit", "Time's Up"]];
     var numeroJeu = parseInt(nom.split("typeNumero")[1]) // récupère le numéro du type de jeux pour avoir le bon tableau
     if (document.getElementsByName(contenu.split('"')[1])[0].checked) { // si le type de jeux est coché ou non
         for (var i = 1; i < typeJeux[numeroJeu].length; i++) {
@@ -212,6 +212,8 @@ function checkRequired() { // vérifie que tous les champs obligatoires sont rem
     }
 
     if(compteur == 0) { // si tous les champs sont remplis
+        document.getElementById("formulaire").action = "VotreAvis.html";
+        document.getElementById("formulaire").submit();
         return true;
     }
     else {
