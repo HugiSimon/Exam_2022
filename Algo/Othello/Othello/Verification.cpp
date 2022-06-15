@@ -74,4 +74,8 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
 
 		}
 	}
+    for (int i = k; i < 1024; i++) {
+        futurPos[i] = (int*)malloc(sizeof(int));
+        *futurPos[i] = -1;
+    }
 }

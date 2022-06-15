@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "Affichage.h"
 #include "Verification.h"
+#include "Poser.h"
 
 int main() {
 
@@ -22,6 +23,7 @@ int main() {
 	Affichage Affichage(Home.ReturnCouleur(1), Home.ReturnCouleur(2));
 
 	Verification Verif;
+	Poser Pose;
 
 	int* possibilite[1024];
 
@@ -29,8 +31,9 @@ int main() {
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
 		Verif.ToutesPossibilte(plateau, 1, possibilite);
-
-		Sleep(100000000);
+		Pose.PoserPions(plateau, possibilite, 1);
+		system("cls");
+		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
 	}
 
 	return 0;
