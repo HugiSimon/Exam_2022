@@ -59,13 +59,15 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
 
 					if (compteur > 0) {
 						if (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == 0) {
-							fprintf(stdout, "Joueur%d x : %d - y : %d\n", Joueur, *pos[i] + (Vx * SuitX), *pos[i + 1] + (Vy * SuitY));
-							futurPos[k] = (int*)malloc(sizeof(int));
-							*futurPos[k] = *pos[i] + (Vx * SuitX);
-							k++;
-							futurPos[k] = (int*)malloc(sizeof(int));
-							*futurPos[k] = *pos[i + 1] + (Vy * SuitY);
-							k++;
+							if (*pos[i] + (Vx * SuitX) >= 0 && *pos[i] + (Vx * SuitX) <= 7 && *pos[i + 1] + (Vy * SuitY) >= 0 && *pos[i + 1] + (Vy * SuitY) <= 7) {
+								fprintf(stdout, "Joueur%d x : %d - y : %d\n", Joueur, *pos[i] + (Vx * SuitX), *pos[i + 1] + (Vy * SuitY));
+								futurPos[k] = (int*)malloc(sizeof(int));
+								*futurPos[k] = *pos[i] + (Vx * SuitX);
+								k++;
+								futurPos[k] = (int*)malloc(sizeof(int));
+								*futurPos[k] = *pos[i + 1] + (Vy * SuitY);
+								k++;
+							}
 						}
 					}
 

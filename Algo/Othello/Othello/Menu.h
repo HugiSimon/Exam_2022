@@ -19,6 +19,7 @@ public:
 	HANDLE ReturnConsole();
 	int ReturnCouleur(int J);
 	std::string ReturnNom(int J);
+	bool ReturnJoueurBot();
 
 private:
 	bool Running;

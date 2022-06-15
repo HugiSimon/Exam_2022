@@ -203,3 +203,8 @@ std::string Menu::ReturnNom(int J)
 		return this->nomJoueur2;
 	}
 }
+
+bool Menu::ReturnJoueurBot()
+{
+	return this->Joueur2Bot;
+}

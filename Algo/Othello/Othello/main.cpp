@@ -34,6 +34,13 @@ int main() {
 		Pose.PoserPions(plateau, possibilite, 1);
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
+		if (Home.ReturnJoueurBot()) {
+			Sleep(1000);
+		}
+		else {
+			Verif.ToutesPossibilte(plateau, 2, possibilite);
+			Pose.PoserPions(plateau, possibilite, 2);
+		}
 	}
 
 	return 0;
