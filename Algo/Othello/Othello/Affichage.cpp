@@ -29,12 +29,14 @@ void Affichage::Plateau(int plato[8][8], HANDLE Console, std::string Joueur1, st
         if (i == 2) {
             Point(Joueur2, point2, this->Joueur2Couleur, Console);
         }
+        SetConsoleTextAttribute(Console, 15);
         fprintf(stdout, "\n");
     }
 }
 
 void Affichage::Point(std::string nom, int point, int couleur, HANDLE Console)
 {
+    SetConsoleTextAttribute(Console, 15);
     fprintf(stdout, "      ");
     SetConsoleTextAttribute(Console, couleur);
     fprintf(stdout, "%s : %d", nom.c_str(), point);
