@@ -26,6 +26,7 @@ int main() {
 	Poser Pose;
 
 	int* possibilite[1024];
+	int peutJouer = 0;
 
 	while (Home.Run()) {
 		system("cls");
@@ -34,6 +35,10 @@ int main() {
 		Verif.ToutesPossibilte(plateau, 1, possibilite);
 		if (Verif.PeutJouer()) {
 			Pose.PoserPions(plateau, possibilite, 1);
+			peutJouer = 0;
+		}
+		else {
+			peutJouer++;
 		}
 
 		system("cls");
@@ -46,7 +51,15 @@ int main() {
 			Verif.ToutesPossibilte(plateau, 2, possibilite);
 			if (Verif.PeutJouer()) {
 				Pose.PoserPions(plateau, possibilite, 2);
+				peutJouer = 0;
 			}
+			else {
+				peutJouer++;
+			}
+		}
+
+		if (peutJouer >= 2) {
+			Home.ChangeRun(false);
 		}
 	}
 
