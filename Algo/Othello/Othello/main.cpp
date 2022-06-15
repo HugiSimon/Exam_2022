@@ -4,6 +4,7 @@
 
 #include "Menu.h"
 #include "Affichage.h"
+#include "Verification.h"
 
 int main() {
 
@@ -19,10 +20,12 @@ int main() {
 
 	Affichage Affichage(Home.ReturnCouleur(1), Home.ReturnCouleur(2));
 
+	Verification Verif;
+
 	while (Home.Run()) {
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
-		Sleep(3000);
+		Verif.ToutesPossibilite(plateau, 1);
 	}
 
 	return 0;
