@@ -11,6 +11,7 @@ int main() {
 	int plateau[8][8] = {};
 	plateau[3][3] = 1;
 	plateau[4][4] = 1;
+
 	plateau[3][4] = 2;
 	plateau[4][3] = 2;
 
@@ -22,10 +23,14 @@ int main() {
 
 	Verification Verif;
 
+	int* possibilite[1024];
+
 	while (Home.Run()) {
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
-		Verif.ToutesPossibilite(plateau, 1);
+		Verif.ToutesPossibilte(plateau, 1, possibilite);
+
+		Sleep(100000000);
 	}
 
 	return 0;

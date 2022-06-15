@@ -3,22 +3,14 @@
 #include <iostream>
 #include <Windows.h>
 
-typedef struct coordonnees {
-
-	int x;
-	int y;
-
-} coordonnees;
-
 class Verification
 {
 public:
 	Verification();
 
-	coordonnees* ToutPosition(int plateau[8][8], int Joueur);
-	coordonnees* ToutesPossibilite(int plateau[8][8], int Joueur);
+	void ToutesPosition(int plateau[8][8], int Joueur, int *pos[128]);
+	void ToutesPossibilte(int plateau[8][8], int Joueur, int *futurPos[1024]);
 
 private:
-	coordonnees* pos[64];
 
 };

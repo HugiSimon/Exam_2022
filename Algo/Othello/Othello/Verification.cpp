@@ -2,69 +2,76 @@
 
 Verification::Verification()
 {
-
 }
 
-coordonnees* Verification::ToutPosition(int plateau[8][8], int Joueur)
+void Verification::ToutesPosition(int plateau[8][8], int Joueur, int* pos[128])
 {
-    coordonnees* ToutesPos = new coordonnees[64];
-    int i = 0;
-    for (int x = 0; x < 8; x++) {
-        for (int y = 0; y < 8; y++) {
-            if (plateau[x][y] == Joueur) {
-                ToutesPos[i].x = x;
-                ToutesPos[i].y = y;
-                i++;
-            }
-        }
-    }
-    return ToutesPos;
-}
-
-coordonnees* Verification::ToutesPossibilite(int plateau[8][8], int Joueur)
-{
-    coordonnees* piont = ToutPosition(plateau, Joueur);
-	
-	coordonnees Possibilite[64 * 8];
-	for (int i = 0; i < 64 * 8; i++) {
-		Possibilite[i] = { -1, -1 };
-	}
 	int k = 0;
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
+			if (plateau[i][j] == Joueur) {
+				pos[k] = (int*)malloc(sizeof(int));
+				*pos[k] = i;
+				k++;
+				pos[k] = (int*)malloc(sizeof(int));
+				*pos[k] = j;
+				k++;
+			}
+			else {
+				pos[k] = (int*)malloc(sizeof(int));
+				*pos[k] = -1;
+				k++;
+				pos[k] = (int*)malloc(sizeof(int));
+				*pos[k] = -1;
+				k++;
+			}
+		}
+	}
+}
+
+void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos[1024])
+{
+	int* pos[128];
+	ToutesPosition(plateau, Joueur, pos);
 
 	int JoueurAdv = 1;
 	if (Joueur == 1) {
 		JoueurAdv = 2;
 	}
 
-	for (int i = 0; i < 64; i++) {
-		if (piont[i].x != -1) {
+	int k = 0;
 
-			for (int vX = -1; vX <= 1; vX++) {
-				for (int vY = -1; vY <= 1; vY++) {
+	for (int i = 0; i < 128; i=i+2) {
+		if (*pos[i] != -1) {
 
-					int SuitX = 0;
-					int SuitY = 0;
+			for (int Vx = -1; Vx <= 1; Vx++) {
+				for (int Vy = -1; Vy <= 1; Vy++) {
+
+					int SuitX = 1;
+					int SuitY = 1;
 					int compteur = 0;
-					while (plateau[piont[i].x + (vX * SuitX)][piont[i].y + (vY * SuitY)] == JoueurAdv) {
-						compteur++;
+
+					while (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == JoueurAdv) {
 						SuitX++;
 						SuitY++;
+						compteur++;
 					}
 
 					if (compteur > 0) {
-						if (plateau[piont[i].x + (vX * SuitX)][piont[i].y + (vY * SuitY)] == 0) {
-							Possibilite[k] = { piont[i].x + (vX * SuitX), piont[i].y + (vY * SuitY) };
+						if (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == 0) {
+							fprintf(stdout, "Joueur%d x : %d - y : %d\n", Joueur, *pos[i] + (Vx * SuitX), *pos[i + 1] + (Vy * SuitY));
+							futurPos[k] = (int*)malloc(sizeof(int));
+							*futurPos[k] = *pos[i] + (Vx * SuitX);
+							k++;
+							futurPos[k] = (int*)malloc(sizeof(int));
+							*futurPos[k] = *pos[i + 1] + (Vy * SuitY);
 							k++;
 						}
 					}
 
 				}
-			}
+ 			}
 
 		}
 	}
-
-	return Possibilite;
 }
-
-
