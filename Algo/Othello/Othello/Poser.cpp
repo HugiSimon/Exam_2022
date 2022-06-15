@@ -65,36 +65,30 @@ void Poser::RetournerPions(int plateau[8][8], int x, int y, int Joueur)
 	}
 
 	k = 0;
-	for (int i = 0; i < 128; i = i + 2) {
-		if (*pos[i] != -1) {
 
-			for (int Vx = -1; Vx <= 1; Vx++) {
-				for (int Vy = -1; Vy <= 1; Vy++) {
+	for (int Vx = -1; Vx <= 1; Vx++) {
+		for (int Vy = -1; Vy <= 1; Vy++) {
 
-					int SuitX = 1;
-					int SuitY = 1;
-					int compteur = 0;
+			int SuitX = 1;
+			int SuitY = 1;
+			int compteur = 0;
 
-					while (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == JoueurAdv) {
+			while (plateau[x + (Vx * SuitX)][y + (Vy * SuitY)] == JoueurAdv) {
+				SuitX++;
+				SuitY++;
+				compteur++;
+			}
+
+			if (compteur > 0) {
+				if (plateau[x + (Vx * SuitX)][y + (Vy * SuitY)] == Joueur) {
+
+					SuitX = 1;
+					SuitY = 1;
+
+					for (int j = 0; j < compteur; j++) {
+						plateau[x + (Vx * SuitX)][y + (Vy * SuitY)] = Joueur;
 						SuitX++;
 						SuitY++;
-						compteur++;
-					}
-
-					if (compteur > 0) {
-						fprintf(stdout, "x: %d y: %d\n", *pos[i] + (Vx * SuitX), *pos[i + 1] + (Vy * SuitY));
-						if (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == Joueur) {
-
-							SuitX = 1;
-							SuitY = 1;
-
-							for (int j = 0; j < compteur; j++) {
-								plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] = Joueur;
-								SuitX++;
-								SuitY++;
-							}
-
-						}
 					}
 
 				}
