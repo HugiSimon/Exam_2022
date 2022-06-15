@@ -2,6 +2,7 @@
 
 Verification::Verification()
 {
+	this->peutJouer = true;
 }
 
 void Verification::ToutesPosition(int plateau[8][8], int Joueur, int* pos[128])
@@ -40,6 +41,7 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
 	}
 
 	int k = 0;
+	int peutJouer = 0;
 
 	for (int i = 0; i < 128; i=i+2) {
 		if (*pos[i] != -1) {
@@ -61,6 +63,7 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
 						if (plateau[*pos[i] + (Vx * SuitX)][*pos[i + 1] + (Vy * SuitY)] == 0) {
 							if (*pos[i] + (Vx * SuitX) >= 0 && *pos[i] + (Vx * SuitX) <= 7 && *pos[i + 1] + (Vy * SuitY) >= 0 && *pos[i + 1] + (Vy * SuitY) <= 7) {
 								fprintf(stdout, "Joueur%d x : %d - y : %d\n", Joueur, *pos[i] + (Vx * SuitX), *pos[i + 1] + (Vy * SuitY));
+								peutJouer++;
 								futurPos[k] = (int*)malloc(sizeof(int));
 								*futurPos[k] = *pos[i] + (Vx * SuitX);
 								k++;
@@ -80,4 +83,18 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
         futurPos[i] = (int*)malloc(sizeof(int));
         *futurPos[i] = -1;
     }
+	if (peutJouer == 0) {
+		this->peutJouer = false;
+	}
+}
+
+bool Verification::PeutJouer()
+{
+	if (this->peutJouer) {
+		return true;
+	}
+	else {
+		this->peutJouer = true;
+		return false;
+	}
 }

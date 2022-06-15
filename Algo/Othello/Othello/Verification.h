@@ -11,6 +11,9 @@ public:
 	void ToutesPosition(int plateau[8][8], int Joueur, int *pos[128]);
 	void ToutesPossibilte(int plateau[8][8], int Joueur, int *futurPos[1024]);
 
+	bool PeutJouer();
+
 private:
+	bool peutJouer;
 
 };
