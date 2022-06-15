@@ -33,7 +33,7 @@ int main() {
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2));
 
-		 Verif.ToutesPossibilte(plateau, 1, possibilite);
+		Verif.ToutesPossibilte(plateau, 1, possibilite);
 		if (Verif.PeutJouer()) {
 			Pose.PoserPions(plateau, possibilite, 1);
 			peutJouer = 0;
@@ -45,18 +45,19 @@ int main() {
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2));
 
-		if (Home.ReturnJoueurBot()) {
-			Sleep(1000);
-		}
-		else {
-			Verif.ToutesPossibilte(plateau, 2, possibilite);
-			if (Verif.PeutJouer()) {
-				Pose.PoserPions(plateau, possibilite, 2);
-				peutJouer = 0;
+		Verif.ToutesPossibilte(plateau, 2, possibilite);
+		if (Verif.PeutJouer()) {
+			peutJouer = 0;
+
+			if (Home.ReturnJoueurBot()) {
+				Pose.PoserBot(plateau, possibilite);
 			}
 			else {
-				peutJouer++;
+				Pose.PoserPions(plateau, possibilite, 2);
 			}
+		}
+		else {
+			peutJouer++;
 		}
 
 		if (peutJouer >= 2) {

@@ -98,3 +98,25 @@ void Poser::RetournerPions(int plateau[8][8], int x, int y, int Joueur)
 	}
 
 }
+
+void Poser::PoserBot(int plateau[8][8], int* possib[1024])
+{
+	fprintf(stdout, "\nAu bot de Jouer");
+	Sleep(300);
+	fprintf(stdout, ".");
+	Sleep(300);
+	fprintf(stdout, ".");
+	Sleep(300);
+	fprintf(stdout, ".\n");
+	Sleep(300);
+
+	int i = 0;
+	while (*possib[i] != -1) {
+		i++;
+	}
+
+	int alea = rand() % i;
+	alea -= alea % 2;
+
+	RetournerPions(plateau, *possib[alea], *possib[alea + 1], 2);
+}
