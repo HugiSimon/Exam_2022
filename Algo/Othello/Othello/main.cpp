@@ -26,13 +26,14 @@ int main() {
 	Poser Pose;
 
 	int* possibilite[1024];
+
 	int peutJouer = 0;
 
 	while (Home.Run()) {
 		system("cls");
-		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
+		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2));
 
-		Verif.ToutesPossibilte(plateau, 1, possibilite);
+		 Verif.ToutesPossibilte(plateau, 1, possibilite);
 		if (Verif.PeutJouer()) {
 			Pose.PoserPions(plateau, possibilite, 1);
 			peutJouer = 0;
@@ -42,7 +43,7 @@ int main() {
 		}
 
 		system("cls");
-		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2), 10, 29);
+		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2));
 
 		if (Home.ReturnJoueurBot()) {
 			Sleep(1000);
