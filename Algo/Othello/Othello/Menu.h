@@ -16,6 +16,10 @@ public:
 	void ChoixCouleur(int Joueur);
 	void ChoixNom(int Joueur);
 
+	HANDLE ReturnConsole();
+	int ReturnCouleur(int J);
+	std::string ReturnNom(int J);
+
 private:
 	bool Running;
 

@@ -50,6 +50,9 @@ void Menu::ChoixInit()
 
 		fprintf(stdout, "\nVotre nom de Joueur\n");
 		ChoixNom(1);
+
+		this->nomJoueur2 = "Bot";
+		this->Joueur2Couleur = 80;
 	}
 	else {
 		fprintf(stdout, "\nDeux Joueur\n");
@@ -173,5 +176,30 @@ void Menu::ChoixNom(int Joueur)
 	}
 	else {
 		this->nomJoueur2 = choix;
+	}
+}
+
+HANDLE Menu::ReturnConsole()
+{
+	return this->hConsole;
+}
+
+int Menu::ReturnCouleur(int J)
+{
+	if (J == 1) {
+		return this->Joueur1Couleur;
+	}
+	else {
+		return this->Joueur2Couleur;
+	}
+}
+
+std::string Menu::ReturnNom(int J)
+{
+	if (J==1) {
+		return this->nomJoueur1;
+	}
+	else{
+		return this->nomJoueur2;
 	}
 }
