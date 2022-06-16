@@ -19,10 +19,10 @@ void Verification::ToutesPosition(int plateau[8][8], int Joueur, int* pos[128])
 				k++;
 			}
 			else {
-				pos[k] = (int*)malloc(sizeof(int));
-				*pos[k] = -1;
+                pos[k] = (int*)malloc(sizeof(int));
+                *pos[k] = -1;
 				k++;
-				pos[k] = (int*)malloc(sizeof(int));
+                pos[k] = (int*)malloc(sizeof(int));
 				*pos[k] = -1;
 				k++;
 			}
@@ -80,12 +80,13 @@ void Verification::ToutesPossibilte(int plateau[8][8], int Joueur, int* futurPos
 		}
 	}
     for (int i = k; i < 1024; i++) {
-        futurPos[i] = (int*)malloc(sizeof(int));
+		futurPos[i] = (int*)malloc(sizeof(int));
         *futurPos[i] = -1;
     }
 	if (peutJouer == 0) {
 		this->peutJouer = false;
 	}
+	free(*pos);
 }
 
 bool Verification::PeutJouer()

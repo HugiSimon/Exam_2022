@@ -41,7 +41,6 @@ int main() {
 		else {
 			peutJouer++;
 		}
-
 		system("cls");
 		Affichage.Plateau(plateau, Home.ReturnConsole(), Home.ReturnNom(1), Home.ReturnNom(2));
 

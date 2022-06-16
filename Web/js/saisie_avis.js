@@ -36,7 +36,7 @@ function createIdentite (nom) { // créé le formulaire d'identité
     contenu += "<div class='form-group'>";
 
     contenu += "<label for='date'>Date de naissance : </label>"; // label pour la date de naissance
-    contenu += "<input type='date' class='red' id='date' placeholder='Date de naissance' name='date'>";
+    contenu += "<input type='date' onchange='age()' class='red' id='date' placeholder='Date de naissance' name='date'>";
     contenu += "<p id='ageCalcule' style='display: inline'></p>";
 
     contenu += "</div>";

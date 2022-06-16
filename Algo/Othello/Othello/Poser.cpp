@@ -96,7 +96,7 @@ void Poser::RetournerPions(int plateau[8][8], int x, int y, int Joueur)
 
 		}
 	}
-
+	free(*pos);
 }
 
 void Poser::PoserBot(int plateau[8][8], int* possib[1024])
