@@ -167,6 +167,11 @@ function checkRequired() { // vérifie que tous les champs obligatoires sont rem
         document.getElementById('email').style.border = "2px solid red";
         document.getElementById('email2').style.border = "2px solid red";
         compteur++;
+    } else {
+        document.getElementById('email').style.border = "";
+        document.getElementById('email2').style.border = "";
+        document.getElementById('email').style.color = "green";
+        document.getElementById('email2').style.color = "green";
     }
 
     var radio = document.getElementsByName('genre');
