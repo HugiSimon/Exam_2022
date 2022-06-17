@@ -78,7 +78,7 @@ function createJeux (nom) { // créé le formulaire de jeux
 }
 
 function createAvis (nom) { // créé le formulaire d'avis
-    var TypeDeJeux = ['Monopoly', 'Uno', 'Jenga', 'Limite Limite'];
+    var TypeDeJeux = ['Rummikub', 'Story Cubes', 'Wazabi', 'Uno', 'Solitaire', 'Tarot', 'Mille Borne', 'Monopoly', 'Petits Chevaux', 'Jeu de l oie', 'Mikado', 'Jenga', 'Twister', 'Trivial Poursuite', "Time's Up"];
     //Choix d'un jeu pour lui donner un avis
     var contenu = "<div class='form-group'>"; // début du groupe de champs
     contenu += "<label for='avis'>Votre avis sur le jeu : </label>"; // label pour le jeux

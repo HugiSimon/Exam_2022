@@ -22,9 +22,9 @@ public:
 	bool ReturnJoueurBot();
 
 private:
-	bool Running;
+	bool Running; // Bool de la boucle principale
 
-	bool Joueur2Bot;
+	bool Joueur2Bot; // Bool du 2ème joueur // Vrai = bot, Faux = humain
 
 	int Joueur1Couleur;
 	int Joueur2Couleur;
@@ -32,5 +32,5 @@ private:
 	std::string nomJoueur1;
 	std::string nomJoueur2;
 
-	HANDLE  hConsole;
+	HANDLE  hConsole; // Pour la console et les couleurs
 };
